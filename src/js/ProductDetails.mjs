@@ -12,6 +12,8 @@ export default class ProductDetails {
     this.renderProductDetails();
     document.getElementById('addToCart')
     .addEventListener('click', this.addProductToCart.bind(this));
+    document.getElementById('addToWishlist')
+    .addEventListener('click', this.addProductToWishlist.bind(this));
 
   }
 
@@ -20,6 +22,12 @@ export default class ProductDetails {
     cart.push(this.product);
     setLocalStorage('so-cart', cart);
     
+  }
+
+  addProductToWishlist() {
+    const wishlist = getLocalStorage('so-wishlist') || [];
+    wishlist.push(this.product);
+    setLocalStorage('so-wishlist', wishlist);
   }
 
   renderProductDetails() {
